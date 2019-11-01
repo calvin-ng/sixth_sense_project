@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+{% load static %}
+
+  <head>
+    <title>Sixth Senses</title>
+
+<!--Mapbox links-->
+    <script src='https://api.mapbox.com/mapbox-gl-js/v1.4.1/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v1.4.1/mapbox-gl.css' rel='stylesheet' />
+
+  </head>
+
+  <body>
+  <!--Mapbox linkns -->
+    <div id='map' style='width: 1200px; height: 900px;'></div>
+    <script>
+        mapboxgl.accessToken = 'pk.eyJ1IjoiY2FsZGFzaHZpbm5nIiwiYSI6ImNqcGQzdXlndjAzbnkza3FndWwwZTdoeWoifQ.BDmYzs6179dETDzGW25WEg';
+        var map = new mapboxgl.Map({
+          container: 'map',
+          style: 'mapbox://styles/mapbox/streets-v11'
+          });
+          
+        </script>
+  <!--mapbox end-->
+
+
+
+    </body>
+
+  <script src="{% static 'jquery-3.4.1.min' %}" ></script>
+  <script src="{% static 'popper.min' %}"></script>
+  <script src="{% static 'js/bootstrap.min.js' %}"></script>
+</html>
