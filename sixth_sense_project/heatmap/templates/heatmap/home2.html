@@ -1,34 +1,42 @@
+
 <!doctype html>
 <html lang="en">
 {% load static %}
 
   <head>
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="{% static 'css/bootstrap.min.css'%}" rel="stylesheet" >
+    <link href=<link rel="stylesheet" href="dashboard.css">
+
+
+    <script src="https://eu-west-1a.online.tableau.com/javascripts/api/tableau-2.min.js"></script>
+    <script type='text/javascript' src='https://eu-west-1a.online.tableau.com/javascripts/api/viz_v1.js'></script>
+    <script type="text/javascript" src="https://online.tableau.com/javascripts/api/tableau-version.min.js"></script>
+    <script type="text/javascript">
+        function initViz() {
+            var containerDiv = document.getElementById("vizContainer"),
+                url = "https://eu-west-1a.online.tableau.com/t/sixthsense/views/sixth_sense_test1/Sheet1?:origin=card_share_link&:embed=n",
+                options = {
+                    hideTabs: true,
+                    onFirstInteractive: function () {
+                        console.log("Run this code when the viz has finished loading.");
+                    }
+                };
+            var viz = new tableau.Viz(containerDiv, url, options);
+            // Create a viz object and embed it in the container div.
+        };
+    </script>
+
     <title>Sixth Senses</title>
-
-<!--Mapbox links-->
-    <script src='https://api.mapbox.com/mapbox-gl-js/v1.4.1/mapbox-gl.js'></script>
-    <link href='https://api.mapbox.com/mapbox-gl-js/v1.4.1/mapbox-gl.css' rel='stylesheet' />
-
   </head>
 
-  <body>
-  <!--Mapbox linkns -->
-    <div id='map' style='width: 1200px; height: 900px;'></div>
-    <script>
-        mapboxgl.accessToken = 'pk.eyJ1IjoiY2FsZGFzaHZpbm5nIiwiYSI6ImNqcGQzdXlndjAzbnkza3FndWwwZTdoeWoifQ.BDmYzs6179dETDzGW25WEg';
-        var map = new mapboxgl.Map({
-          container: 'map',
-          style: 'mapbox://styles/mapbox/streets-v11'
-          });
-          
-        </script>
-  <!--mapbox end-->
+  <body class="text-center" onload="initViz()">
+    <div id="vizContainer" style='width: 70%; height: 70%;  z-axis: 0; position: absolute, left=50%, top=20%, margin:auto'></div>
+  </body>
 
 
-
-    </body>
-
-  <script src="{% static 'jquery-3.4.1.min' %}" ></script>
-  <script src="{% static 'popper.min' %}"></script>
-  <script src="{% static 'js/bootstrap.min.js' %}"></script>
+<script src="{% static 'jquery-3.4.1.min' %}" ></script>
+<script src="{% static 'popper.min' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
 </html>
